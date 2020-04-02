@@ -1,0 +1,41 @@
+pipeline {
+	parameters {
+		boleanParam(name: CHECKBOX_PARAM, defaultValue: false)
+	}
+	environment {
+	
+	}
+	stages {
+		stage("stage1") {
+			steps {
+			
+			}
+		}
+		post {
+			success {
+			
+			}
+			always {
+
+			}
+		}
+		stage("stage2") {
+			steps {
+			
+			}
+		}
+		stage("docker") {
+			agent {
+				docker {
+					image ''
+				}
+			}
+			when { expession { return params.CHECKBOX_PARAM } }
+		}
+	}
+	post {
+		cleanup {
+			cleanWs()
+		}
+	}
+}
